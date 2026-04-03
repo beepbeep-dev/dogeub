@@ -195,7 +195,8 @@ export default defineConfig(({ command }) => {
   const environment = isStatic ? 'static' : command === 'serve' ? 'dev' : 'stable';
 
   return {
-    base: isStatic ? './' : '/',
+   base: '/dogeub/', 
+,
     plugins: [
       react(),
       vitePluginBundleObfuscator(obf),
