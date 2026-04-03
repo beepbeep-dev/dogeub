@@ -195,8 +195,7 @@ export default defineConfig(({ command }) => {
   const environment = isStatic ? 'static' : command === 'serve' ? 'dev' : 'stable';
 
   return {
-   base: '/dogeub/', 
-,
+    base: '/dogeub/', // Fixed: Removed the extra comma below this
     plugins: [
       react(),
       vitePluginBundleObfuscator(obf),
@@ -225,13 +224,16 @@ export default defineConfig(({ command }) => {
               .replace(/\/assets-fb\//g, 'https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/img/server/')
               .replace(/\/assets\/img\//g, 'https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/img/');
           }
-          /*
-            this may be weird, bc even if static = true,
-            the images/files are still there, so why rewrite to use jsdelivr?
-            because we feel like it. (this is needed under very specific circumstances)
-          */
           if (id.endsWith('Logo.jsx')) {
-            return code
+            return code.replace(/['"]\/logo\.svg['"]/g, "'https://jsdelivr.net'");
+          }
+          return code;
+        },
+      },
+    ].filter(Boolean), // Added filter to handle isStatic being false
+  };
+});
+
               .replace(/['"]\/logo\.svg['"]/g, "'https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/logo.svg'");
           }
           if (id.endsWith('useReg.js')) {
