@@ -234,17 +234,7 @@ export default defineConfig(({ command }) => {
   };
 });
 
-              .replace(/['"]\/logo\.svg['"]/g, "'https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/logo.svg'");
-          }
-          if (id.endsWith('useReg.js')) {
-            return code
-              .replace(/['"]\/eggs\/scramjet\.wasm\.wasm['"]/g, "'https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/eggs/scramjet.wasm.wasm'")
-              .replace(/['"]\/eggs\/scramjet\.all\.js['"]/g, "'https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/eggs/scramjet.all.js'")
-              .replace(/['"]\/eggs\/scramjet\.sync\.js['"]/g, "'https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/eggs/scramjet.sync.js'")
-              .replace(/['"]\/libcurl\/index\.mjs['"]/g, "'https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/libcurl/index.mjs'");
-          }
-        },
-      },
+
       {
         name: 'server',
         apply: 'serve',
